@@ -15,26 +15,26 @@
         <nav>
             <table align="center" cellpadding="10">
                 <tr>
-                    <td><a href="#about">About Me</a></td>
+                    <td><a href="about">About Me</a></td>
                     <td><a href="#projects">Projects</a></td>
                     <td><a href="#contact">Contact</a></td>
                     <td><a href="#education">Education</a></td>
                     <td><a href="#skills">Skills</a></td>
                     <td><a href="#languages">Languages</a></td>
                     <td><a href="#others">Others</a></td>
-                    <td><a href="#registration">Registration</a></td>
+                    <td><a href="Form-Registrartion.html"
+                    target="_blank"> Registration</a></td>
                 </tr>
             </table>
         </nav> <br> <br>
     
         <section id="about">
-            <div class="about-container">
                 <h2>About Me</h2>
                 <table cellpadding="10">
                     <tr>
                         <td><img src="./image/JONATHAN.jpg" width="100px"></td>
                         <td>
-                            <p style="font-size: 1.1em; max-width: 70%;">
+                            <p>
                             Hello, My name is Jonathan Kwan. 
                             I'm just an ordinary scholar and 
                             I also a casual gamer. Apart from 
@@ -47,7 +47,6 @@
                         </p></td>
                     </tr>
                 </table>
-            </div>
         </section> <br><br>
 
         <section id="portfolio">
@@ -125,31 +124,6 @@
         </section> <br> <br>
     
         <button id="download-cv">Download Portfolio</button> <br><br>
-    
-        <script>
-            var projects = document.querySelectorAll('.project');
-            projects.forEach(function(project) {
-                project.addEventListener('mouseover', function() {
-                    project.style.transform = 'scale(1.05)';
-                    project.style.transition = 'transform 0.3s ease-in-out';
-                });
-                project.addEventListener('mouseout', function() {
-                project.style.transform = 'scale(1)';
-                project.style.transition = 'transform 0.3s ease-in-out';
-                });
-            });
-        
-            function downloadCV() {
-                var cvFile = 'Jonathan_Kwan_Portofolio.pdf';
-                var link = document.createElement('a');
-                link.href = cvFile;
-                link.download = cvFile;
-                document.body.appendChild(link);
-                link.click();
-                document.body.removeChild(link);
-            }
-            document.getElementById('download-cv').addEventListener('click', downloadCV);
-        </script>
 </body>
 
 <footer>

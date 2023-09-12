@@ -7,7 +7,7 @@
 </head>
 <body>
     <h1>Form Pendaftaran</h1>
-    <form action="proses_pendaftaran.php" method="post">
+    <form>
         <label for="nama">Nama:</label>
         <input type="text" id="nama" name="nama" required><br><br>
 
@@ -19,24 +19,25 @@
 
         <label for="jenis_kelamin">Jenis Kelamin:</label>
         <select id="jenis_kelamin" name="jenis_kelamin" required>
-            <option value="Laki-laki">Laki-laki</option>
+            <option value="\Laki\" ">Laki-laki</option>
             <option value="Perempuan">Perempuan</option>
         </select><br><br>
 
         <label for="alamat">Alamat:</label><br>
-        <textarea id="alamat" name="alamat" rows="4" cols="50" required></textarea><br><br>
+        <textarea id="alamat" name="alamat" rows="4" cols="208" required></textarea><br><br>
 
         <label for="hobi">Hobi (Pilih satu atau lebih):</label><br>
-        <input type="checkbox" id="membaca" name="hobi[]" value="Membaca">
+        <input type="radio" id="membaca" name="hobi[]" value="Membaca" required>
         <label for="membaca">Membaca</label><br>
-        <input type="checkbox" id="berenang" name="hobi[]" value="Berenang">
+        <input type="radio" id="berenang" name="hobi[]" value="Berenang">
         <label for="berenang">Berenang</label><br>
-        <input type="checkbox" id="bersepeda" name="hobi[]" value="Bersepeda">
+        <input type="radio" id="bersepeda" name="hobi[]" value="Bersepeda">
         <label for="bersepeda">Bersepeda</label><br>
-        <input type="checkbox" id="tidak_ada" name="hobi[]" value="Bersepeda">
+        <input type="radio" id="tidak_ada" name="hobi[]" value="Bersepeda">
         <label for="bersepeda">Tidak ada satupun di atas</label><br><br>
 
         <input type="submit" value="Daftar">
     </form>
+    <a href ="TUGAS-1-PRAKTIKUM-WEB.html" target="_blank">Kembali</a>
 </body>
 </html>
