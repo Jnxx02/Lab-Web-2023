@@ -1,0 +1,63 @@
+.besar{
+    font-size: 80px;
+}
+.sedang{
+    font-size: 40px;
+}
+.kecil{
+    font-size: 10px;
+}
+
+.text{
+    color: red;
+}
+.rgb{
+    color: rgb(250, 0, 0);
+}
+.hsl{
+    color: hsl(0, 100%, 50%);
+}
+.tag{
+    color: #ff0000;
+}
+
+.flex{
+    display: flex;
+    gap: 20px;
+}
+.flex div{
+    width: 100px;
+    height: 100px;
+}
+
+.red-a{
+    background-color: rgb(255 0 0);
+}
+.red-b{
+    background-color: rgb(255 0 0 / .75);
+}
+.red-c{
+    background-color: rgb(255 0 0 / .50);
+}
+.red-d{
+    background-color: rgb(255 0 0 / .25);
+}
+
+.grid{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.navbar{
+    display: flex;
+    background-color: black;
+}
+.navbar a{
+    color: white;
+    padding: 20px;
+    text-decoration: none;
+}
+.navbar a:hover{
+    color: black;
+    background-color: aliceblue;
+}
