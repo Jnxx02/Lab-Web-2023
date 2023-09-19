@@ -1,3 +1,8 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
 .navbar{
     position: fixed;
     top: 0;
@@ -22,6 +27,7 @@
 
 .deskripsi{
     font-size: 24px;
+    /* padding: 70px 20re, 10px 20rem; */
     padding-top: 70px;
     padding-left: 20rem;
     padding-right: 20rem;
@@ -31,20 +37,26 @@
 
 .images {
     display: flex;
-    flex-wrap: wrap;
     justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
     gap: 10px;
     padding: 10px 9rem;
 }
 
-.images img {
-    width: 120px;
-    flex-basis: calc(33.3% - 20px);
-    height: auto;
+.images .gambar {
+    width: 32%;
+    height: 250px;
+    overflow: hidden;
+}
+
+.images .gambar img {
+    width: 100%;
+    height: 250px;
     transition: transform 0.3s;
 }
 
-.images img:hover {
+.images .gambar img:hover {
     transform: scale(1.1);
 }
 
@@ -120,9 +132,8 @@
         padding: 10px 5rem;
     }
 
-    .images img {
-        flex-basis: calc(50% - 10px);
-        max-width: 100%;
+    .images .gambar {
+        width: 49%;
     }
 
     .footer-left img {
@@ -153,10 +164,11 @@
 
     .images {
         padding: 10px 2rem;
+        justify-content: center;
     }
 
-    .images img {
-        flex-basis: calc(100% - 10px);
+    .images .gambar {
+        width: 100%;
     }
 
     .footer {
