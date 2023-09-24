@@ -27,11 +27,7 @@
 
 .deskripsi{
     font-size: 24px;
-    /* padding: 70px 20re, 10px 20rem; */
-    padding-top: 70px;
-    padding-left: 20rem;
-    padding-right: 20rem;
-    padding-bottom: 10px;
+    padding: 80px 20rem 10px 20rem;
     text-align: justify
 }
 
@@ -57,7 +53,7 @@
 }
 
 .images .gambar img:hover {
-    transform: scale(1.1);
+    transform: scale(1.10);
 }
 
 .footer {

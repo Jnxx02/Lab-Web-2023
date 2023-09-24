@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tugas 3 Praktikum Web</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <style>
+        .judul,
+        .deskripsi {
+            text-align: center;
+        }
+
+        .container-fluid img {
+            padding: 5px;
+        }
+
+        .container-footer img {
+            padding: 5px;
+        }
+
+        .container-footer p {
+            padding: 5px;
+            font-size: medium;
+        }
+
+        .navbar-nav .nav-link:hover {
+            background-color: darkcyan;
+            color: black;
+        }
+
+        .card-image {
+            transition: transform 0.2s ease-in-out, opacity 0.2s ease-in-out;
+            overflow: hidden;
+        }
+
+        .card-image:hover {
+            transform: scale(1.1);
+            opacity: 0.8;
+        }
+
+
+        @media(min-width: 650px) {
+            .card-img-overlay {
+                padding-top: 10rem;
+                justify-content: center;
+            }
+        }
+
+        @media(min-width: 820px) {
+            .card-img-overlay {
+                padding-top: 20rem;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+
+<body class="bg-warning-subtle">
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg bg-dark sticky-top">
+        <div class="container-fluid">
+            <img src="./img/Genshin Logo.jpeg" alt="" width="40px;" height="40px;">
+            <span class="navbar-brand text-light">Genshin Impact</span>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText"
+                aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon" style="background-color: whitesmoke;"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarText">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0"></ul>
+                <span class="navbar-text">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link active text-light" aria-current="page" href="#beranda">Beranda</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active text-light" aria-current="page" href="#karakter">Karakter</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active text-light" aria-current="page" href="#eksplorasi">Eksplorasi</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active text-light" aria-current="page"
+                                href="https://genshin.hoyoverse.com/en/" target="_blank">Unduh</a>
+                        </li>
+
+                    </ul>
+                </span>
+            </div>
+        </div>
+    </nav>
+
+
+    <!-- Beranda Section -->
+    <section id="beranda">
+        <div class="card text-bg-dark">
+            <img src="/img/FONTAINE-UNDERWATER.png" class="card-img">
+            <div class="card-img-overlay text-center justify-content-center">
+                <h1 class="card-title">Welcome to Genshin Impact</h1>
+                <p class="card-text">Explore a stunning fantasy world and develop your unique character.</p>
+                <a href="https://genshin.hoyoverse.com/en/" target="_blank" class="btn btn-light btn-md">Start Play</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Karakter -->
+    <section id="karakter" class="character py-5">
+        <div class="container">
+            <h3 class="judul">Characters</h3>
+            <p class="deskripsi">Discover and develop unique characters with extraordinary powers..</p>
+            <div class="row justify-content-center py-5">
+                <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
+                    <div class="card mx-auto" style="width: 80%;">
+                        <img src="./img/Lyney.webp" class="card-img-top card-image">
+                        <div class="card-body bg-danger-subtle">
+                            <h5 class="card-title">Lyney - 5 Star (Pyro)</h5>
+                            <p class="card-text text-justify">A famed Fontainian magician who possesses great stage
+                                presence as well
+                                as gift of the gab. Audiences are enthralled by his exquisite skills, and they hang on
+                                to this every clever word.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
+                    <div class="card mx-auto" style="width: 80%;">
+                        <img src="./img/Lynette.webp" class="card-img-top card-image">
+                        <div class="card-body bg-success-subg-danger-subtle">
+                            <h5 class="card-title">Lynette - 4 Star (Anemo)</h5>
+                            <p class="card-text text-justify">A magic assistant of few words, her emotions are as
+                                instructable as any
+                                cat's.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6 col-sm-12 mb-">
+                    <div class="card mx-auto" style="width: 80%;">
+                        <img src="./img/Freminet.webp" class="card-img-top card-image">
+                        <div class="card-body bg-info-subg-danger-subtle">
+                            <h5 class="card-title">Freminet - 4 Star (Cryo)</h5>
+                            <p class="card-text text-justify">A reserved young man who is well-versed in diving. Beneath
+                                his distant,
+                                icy demeanor lies a pure heart bereft of all flaws.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Carousel Section -->
+    <section id="eksplorasi">
+        <div class="container justify-content-center mx-auto mb-4">
+            <div id="carouselExample" class="carousel slide" data-bs-ride="carousel">
+                <h3 class="judul">Exploration</h3>
+                <p class="deskripsi"> Explore the fantasy world and enjoy various beautiful views.
+                </p>
+                <div class="carousel-indicators">
+                    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active"
+                        aria-current="true" aria-label="Slide 1"></button>
+                    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1"
+                        aria-label="Slide 2"></button>
+                    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2"
+                        aria-label="Slide 3"></button>
+                    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="3"
+                        aria-label="Slide 4"></button>
+                    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="4"
+                        aria-label="Slide 5"></button>
+                    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="5"
+                        aria-label="Slide 6"></button>
+                    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="6"
+                        aria-label="Slide 7"></button>
+                    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="7"
+                        aria-label="Slide 8"></button>
+                </div>
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <img src="./img/FONTAINE-1.webp" class="d-block w-100" alt="Gambar 1">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="./img/FONTAINE-ELYNAS.png" class="d-block w-100" alt="Gambar 2">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="./img/FONTAINE-UNDERGROUND.webp" class="d-block w-100" alt="Gambar 3">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="./img/FONTAINE.webp" class="d-block w-100" alt="Gambar 4">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="./img/INAZUMA.webp" class="d-block w-100" alt="Gambar 5">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="./img/LITYUE.jpg" class="d-block w-100" alt="Gambar 6">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="./img/SUMERU-DESSERT.png" class="d-block w-100" alt="Gambar 7">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="./img/SUMERU-DREAM-WORLD.png" class="d-block w-100" alt="Gambar 8">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer bg-dark text-white text-center py-1 mx-auto">
+        <div class="container-footer justify-content-center p-4">
+            <img src="./img/Hoyoverse logo.png" style="width: 20%;">
+            <p>Copyright &copy; COGNOSPHERE. All Rights Reserved</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
