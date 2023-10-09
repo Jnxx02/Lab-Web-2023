@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="name">
+        <input type="text">
+        <button onclick="myFunction()">Click</button>
+        <button onclick="remove()">Remove</button>
+    </div>
+
+    <script>
+        // const name = document.querySelector('#name')
+        function myFunction() {
+            const input = document.getElementsByTagName('input')
+            const newElement = document.createElement('p')
+            newElement.textContent = input[0].value
+            document.querySelector('#name').appendChild(newElement)
+        }
+
+        function remove() {
+            const input = document.getElementsByTagName('input')
+            const hapus = document.querySelector('p')
+            document.querySelector('#name').removeChild(hapus)
+        }
+    </script>
+</body>
+
+</html>

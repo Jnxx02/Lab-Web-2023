@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Black Jack</title>
+    <link rel="stylesheet" href="blackjack.css">
+    <script src="blackjack.js"></script>
+</head>
+
+<body>
+    <h1>Welcome to Hell Black Jack</h1>
+
+    <h2><span id="dealer-sum" style="display: none;">Dealer: </span></h2>
+    <div id="dealer-cards"></div>
+
+    <h2><span id="your-sum" style="display: none;">You: </span></h2>
+    <div id="your-cards"></div>
+
+    <br>
+    <p id="credit">Credit: </p>
+    <input type="number" id="credit-input" placeholder="Enter amount" min="5000" required>
+    <p id="results"></p>
+    <div id="button">
+        <button id="start">Start Game</button>
+        <button id="hit">Hit</button>
+        <button id="hold">Hold</button>
+    </div>
+</body>
+
+</html>
