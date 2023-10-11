@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+
 body {
     position: relative;
     background-image: url("./Table.png");
@@ -6,6 +8,7 @@ body {
     text-align: center;
     color: antiquewhite;
     justify-items: center;
+    font-family: 'Montserrat', sans-serif;
 }
 
 body h1 {
@@ -25,7 +28,8 @@ body h1 {
     margin: 1px;
 }
 
-#credit, #results {
+#credit,
+#results {
     font-size: larger;
     font-weight: bold;
 }
@@ -40,6 +44,7 @@ input[type="number"] {
     text-align: center;
     justify-items: center;
 }
+
 input:focus {
     border-color: #007bff;
     outline: none;

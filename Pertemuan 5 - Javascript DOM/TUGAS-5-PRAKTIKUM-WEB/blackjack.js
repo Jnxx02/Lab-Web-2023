@@ -8,6 +8,8 @@ let hidden;
 let deck;
 
 let canHit = true;
+let canHold = true;
+let canTryAgain = false;
 let credit = 30000;
 let betAmount = 0;
 let gameInProgress = false;
@@ -51,10 +53,13 @@ function startGame() {
 
     if (numericCreditInput < 5000) {
         alert("Minimal bet yang diperlukan adalah 5000.");
+        return;
     } else if (numericCreditInput > credit) {
         alert("Credit kurang.");
+        stopGame();
     } else if (isNaN(numericCreditInput)) {
         alert("Minimal bet yang diperlukan adalah 5000.")
+        return;
     } else {
         betAmount = numericCreditInput;
         credit -= betAmount;
@@ -69,6 +74,8 @@ function startGame() {
         document.getElementById("your-cards").style.display = "none";
         document.getElementById("dealer-sum").style.display = "block";
         document.getElementById("your-sum").style.display = "block";
+        document.getElementById("hit").style.display = "block";
+        document.getElementById("hold").style.display = "block";
 
         gameInProgress = true;
 
@@ -128,7 +135,12 @@ function hold() {
     yourSum = reduceAce(yourSum, yourAceCount);
 
     canHit = false;
+    canTryAgain = true;
     document.getElementById("hidden").src = "./cards/" + hidden + ".png";
+
+    if (!canHold) {
+        return;
+    }
 
     let message = "";
     if (yourSum > 21) {
@@ -156,25 +168,57 @@ function hold() {
     document.getElementById("results").innerText = message;
     document.getElementById("credit").textContent = "Credit: Rp. " + credit;
 
+    if (reduceAce(yourSum, yourAceCount) > 21) {
+        canHold = false;
+    }
+
     if (credit <= 0) {
         alert("Your credit is empty. Game over!");
         quitGame();
     } else {
         gameInProgress = false;
-        canHit = true;
         document.getElementById("start").textContent = "Try Again"
         document.getElementById("start").addEventListener("click", tryAgain);
+        document.getElementById("hit").disabled = true;
+        document.getElementById("hold").disabled = true;
+        document.getElementById("start").disabled = false;
     }
 }
 
+function stopGame() {
+    gameInProgress = false;
+    document.getElementById("hit").disabled = true;
+    document.getElementById("hold").disabled = true;
+    location.reload();
+}
+
 function quitGame() {
-    location.reload;
+    gameInProgress = false;
+    document.getElementById("hit").disabled = true;
+    document.getElementById("hold").disabled = true;
+    document.getElementById("start").disabled = true;
+
+    let component = document.getElementById("components");
+    component.innerHTML = "";
+
+    document.querySelector("h1").innerText = "Bankrupt";
+    document.querySelector("h1").style.alignContent = "center";
+
+    alert("Nice Try");
+    return;
 }
 
 function tryAgain() {
     buildDeck();
     shuffleDeck();
     console.log(deck);
+
+    document.getElementById("hit").disabled = false;
+    document.getElementById("hold").disabled = false;
+    document.getElementById("start").disabled = true;
+
+    canHold = true;
+    canHit = true;
 
     dealerSum = 0;
     yourSum = 0;
@@ -223,6 +267,7 @@ function tryAgain() {
 
     document.getElementById("dealer-cards").style.display = "block";
     document.getElementById("your-cards").style.display = "block";
+    document.getElementById("start").style.display = "block";
 
     document.getElementById("hit").addEventListener("click", hit);
     document.getElementById("hold").addEventListener("click", hold);
