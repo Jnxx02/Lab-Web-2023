@@ -1,3 +1,4 @@
+<link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.0/flowbite.min.css" rel="stylesheet" />
 <nav class="fixed top-0 z-50 w-full bg-white border-b border-gray-200 dark:bg-gray-800 dark:border-gray-700">
     <div class="px-3 py-3 lg:px-5 lg:pl-3">
         {{-- Navbar Brand --}}
@@ -76,13 +77,9 @@
                 </x-nav-link>
             </li>
 
-            @if (Auth::check() && Auth::user()->role == 'admin')
-                <li>
-                    <x-nav-link :href="route('user-list')" :active="request()->routeIs('user-list')">
-                        {{ __('Daftar User') }}
-                    </x-nav-link>
-                </li>
-            @endif
+            <!-- @if (Auth::check() && Auth::user()->role == 'admin')
+
+            @endif -->
 
             <!-- @if (Auth::check() && Auth::user()->role == 'teacher')
 
@@ -95,3 +92,4 @@
         </ul>
     </div>
 </aside>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.0/flowbite.min.js"></script>

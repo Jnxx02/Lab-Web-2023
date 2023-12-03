@@ -61,12 +61,6 @@ Route::middleware('auth')->group(function () {
     Route::middleware('admin')->group(function () {
         Route::resource('user-list', UsersController::class)->names([
             'index' => 'user-list',
-            'create' => 'user-list.create',
-            'store' => 'user-list.store',
-            'show' => 'user-list.show',
-            'edit' => 'user-list.edit',
-            'update' => 'user-list.update',
-            'destroy' => 'user-list.destroy',
         ]);
     });
 });
