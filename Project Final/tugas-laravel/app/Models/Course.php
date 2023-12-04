@@ -10,10 +10,11 @@ class Course extends Model
     use HasFactory;
 
     protected $fillable = [
-        'course-name',
+        'course_name',
         'deskripsi',
-        'tanggal-mulai',
-        'tanggal-selesai',
-        'pengajar',
+        'tanggal_mulai',
+        'tanggal_selesai',
+        'teacher_id',
+        'student_id',
     ];
 }

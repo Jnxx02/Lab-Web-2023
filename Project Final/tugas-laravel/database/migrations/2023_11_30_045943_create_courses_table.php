@@ -4,8 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration
-{
+return new class extends Migration {
     /**
      * Run the migrations.
      */
@@ -13,11 +12,24 @@ return new class extends Migration
     {
         Schema::create('courses', function (Blueprint $table) {
             $table->id();
-            $table->string('course-name');
+            $table->string('course_name');
             $table->string('deskripsi');
-            $table->date('tanggal-mulai');
-            $table->date('tanggal-selesai');
-            $table->string('pengajar');
+            $table->date('tanggal_mulai');
+            $table->date('tanggal_selesai');
+
+            // Constraint untuk teacher_id
+            $table->foreignId('teacher_id')
+                ->constrained('users', 'id')
+                ->where('role', 'teacher')
+                ->onDelete('cascade');
+
+            // Constraint untuk student_id
+            $table->foreignId('student_id')
+                ->nullable()
+                ->constrained('users', 'id')
+                ->where('role', 'student')
+                ->onDelete('cascade');
+
             $table->timestamps();
         });
     }

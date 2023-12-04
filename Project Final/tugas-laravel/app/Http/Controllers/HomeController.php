@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\Course;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
@@ -15,9 +18,25 @@ class HomeController extends Controller
                 $users = User::all();
                 return view('dashboard.admin.home', compact('users'));
             } elseif (Auth::user()->role == 'student') {
-                return view('dashboard.student.home');
+                $courses = Course::all();
+                return view('dashboard.student.home', compact('courses'));
             } elseif (Auth::user()->role == 'teacher') {
-                return view('dashboard.teacher.home');
+                $courses = DB::table('courses')
+                    ->join('users as teachers', 'courses.teacher_id', '=', 'teachers.id')
+                    ->leftJoin('users as students', 'courses.student_id', '=', 'students.id')
+                    ->where('teachers.role', 'teacher')
+                    ->orderBy('courses.updated_at', 'desc')
+                    ->select(
+                        'courses.course_name',
+                        'courses.deskripsi',
+                        'courses.teacher_id',
+                        'teachers.name as teacher_name',
+                        DB::raw('COUNT(students.id) as participant_count')
+                    )
+                    ->groupBy('courses.id', 'teachers.name', 'courses.course_name', 'courses.deskripsi', 'courses.teacher_id')
+                    ->get();
+
+                return view('dashboard.teacher.home', compact('courses'));
             }
         } else {
             return view('welcome');

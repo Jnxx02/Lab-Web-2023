@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CourseController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UsersController;
 use App\Http\Controllers\Auth\PasswordController;
@@ -59,8 +60,26 @@ Route::middleware('auth')->group(function () {
         ->name('logout');
 
     Route::middleware('admin')->group(function () {
-        Route::resource('user-list', UsersController::class)->names([
-            'index' => 'user-list',
+        Route::resource('user', UsersController::class)->names([
+            'index' => 'user',
+            'create' => 'user.create',
+            'store' => 'user.store',
+            'show' => 'user.show',
+            'edit' => 'user.edit',
+            'update' => 'user.update',
+            'destroy' => 'user.destroy',
+        ]);
+    });
+
+    Route::middleware('teacher')->group(function () {
+        Route::resource('course', CourseController::class)->names([
+            'index' => 'course',
+            'create' => 'course.create',
+            'store' => 'course.store',
+            'show' => 'course.show',
+            'edit' => 'course.edit',
+            'update' => 'course.update',
+            'destroy' => 'course.destroy',
         ]);
     });
 });
