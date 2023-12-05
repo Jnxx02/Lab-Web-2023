@@ -1,4 +1,3 @@
-<link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.0/flowbite.min.css" rel="stylesheet" />
 <nav class="fixed top-0 z-50 w-full bg-white border-b border-gray-200 dark:bg-gray-800 dark:border-gray-700">
     <div class="px-3 py-3 lg:px-5 lg:pl-3">
         {{-- Navbar Brand --}}
@@ -18,7 +17,7 @@
                 <a href="/" class="flex ms-2 md:me-24">
                     <img src="{{ asset('images/icon.png') }}" class="w-12 h-12 me-1" alt="FlowBite Logo" />
                     <span
-                        class="self-center text-xl font-bold sm:text-2xl whitespace-nowrap dark:text-white">HoyoGuide</span>
+                        class="self-center text-xl font-bold sm:text-2xl whitespace-nowrap dark:text-black">HoyoGuide</span>
                 </a>
             </div>
 
@@ -90,30 +89,40 @@
                     </span>
                 </x-nav-link>
             </li>
-        
+
             @endif
-            
+
             @if (Auth::check() && Auth::user()->role == 'teacher')
             <li>
                 <x-nav-link :href="route('course')" :active="request()->routeIs('course')">
                     <svg class="w-4 h-4 text-gray-800 dark:text-white" aria-hidden="true"
-                    xmlns="http://www.w3.org/2000/svg" fill="grey" viewBox="0 0 20 18">
-                    <path
-                    d="M9 1.334C7.06.594 1.646-.84.293.653a1.158 1.158 0 0 0-.293.77v13.973c0 .193.046.383.134.55.088.167.214.306.366.403a.932.932 0 0 0 .5.147c.176 0 .348-.05.5-.147 1.059-.32 6.265.851 7.5 1.65V1.334ZM19.707.653C18.353-.84 12.94.593 11 1.333V18c1.234-.799 6.436-1.968 7.5-1.65a.931.931 0 0 0 .5.147.931.931 0 0 0 .5-.148c.152-.096.279-.235.366-.403.088-.167.134-.357.134-.55V1.423a1.158 1.158 0 0 0-.293-.77Z" />
-                </svg>
-                <span class="ms-3 text-xl">
-                    {{ __('My Course') }}
-                </span>
+                        xmlns="http://www.w3.org/2000/svg" fill="grey" viewBox="0 0 20 18">
+                        <path
+                            d="M9 1.334C7.06.594 1.646-.84.293.653a1.158 1.158 0 0 0-.293.77v13.973c0 .193.046.383.134.55.088.167.214.306.366.403a.932.932 0 0 0 .5.147c.176 0 .348-.05.5-.147 1.059-.32 6.265.851 7.5 1.65V1.334ZM19.707.653C18.353-.84 12.94.593 11 1.333V18c1.234-.799 6.436-1.968 7.5-1.65a.931.931 0 0 0 .5.147.931.931 0 0 0 .5-.148c.152-.096.279-.235.366-.403.088-.167.134-.357.134-.55V1.423a1.158 1.158 0 0 0-.293-.77Z" />
+                    </svg>
+                    <span class="ms-3 text-xl">
+                        {{ __('My Course') }}
+                    </span>
                 </x-nav-link>
             </li>
 
             @endif
 
-            <!-- @if (Auth::check() && Auth::user()->role == 'student')
-
-            @endif -->
+            @if (Auth::check() && Auth::user()->role == 'student')
+            <li>
+                <x-nav-link :href="route('course-list')" :active="request()->routeIs('course-list')">
+                    <svg class="w-4 h-4 text-gray-800 dark:text-white" aria-hidden="true"
+                        xmlns="http://www.w3.org/2000/svg" fill="grey" viewBox="0 0 20 18">
+                        <path
+                            d="M9 1.334C7.06.594 1.646-.84.293.653a1.158 1.158 0 0 0-.293.77v13.973c0 .193.046.383.134.55.088.167.214.306.366.403a.932.932 0 0 0 .5.147c.176 0 .348-.05.5-.147 1.059-.32 6.265.851 7.5 1.65V1.334ZM19.707.653C18.353-.84 12.94.593 11 1.333V18c1.234-.799 6.436-1.968 7.5-1.65a.931.931 0 0 0 .5.147.931.931 0 0 0 .5-.148c.152-.096.279-.235.366-.403.088-.167.134-.357.134-.55V1.423a1.158 1.158 0 0 0-.293-.77Z" />
+                    </svg>
+                    <span class="ms-3 text-xl">
+                        {{ __('Daftar Course') }}
+                    </span>
+                </x-nav-link>
+            </li>
+            @endif
 
         </ul>
     </div>
 </aside>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.0/flowbite.min.js"></script>

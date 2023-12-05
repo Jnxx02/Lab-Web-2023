@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use App\Models\Course;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -32,8 +33,7 @@ class CourseController extends Controller
                     'courses.tanggal_mulai',
                     'courses.tanggal_selesai',
                     'courses.teacher_id',
-                    'teachers.name as teacher_name',
-                    DB::raw('COUNT(students.id) as participant_count')
+                    'teachers.name as teacher_name'
                 )
                 ->groupBy(
                     'courses.id',
@@ -47,6 +47,33 @@ class CourseController extends Controller
                 ->get();
 
             return view('dashboard.teacher.course-list', compact('courses'));
+
+        } elseif (Auth::user()->role == 'student') {
+            $courses = DB::table('courses')
+                ->join('users as teachers', 'courses.teacher_id', '=', 'teachers.id')
+                ->leftJoin('users as students', 'courses.student_id', '=', 'students.id')
+                ->orderBy('courses.tanggal_selesai', 'desc')
+                ->select(
+                    'courses.id',
+                    'courses.course_name',
+                    'courses.deskripsi',
+                    'courses.tanggal_mulai',
+                    'courses.tanggal_selesai',
+                    'courses.teacher_id',
+                    'teachers.name as teacher_name'
+                )
+                ->groupBy(
+                    'courses.id',
+                    'courses.course_name',
+                    'courses.deskripsi',
+                    'courses.tanggal_mulai',
+                    'courses.tanggal_selesai',
+                    'courses.teacher_id',
+                    'teachers.name'
+                )
+                ->get();
+
+            return view('dashboard.student.course-list', compact('courses'));
         }
         abort(401);
     }
@@ -104,7 +131,7 @@ class CourseController extends Controller
      */
     public function edit(Course $course)
     {
-        $selectedCourse = Course::where('id', $course)->get();
+        $selectedCourse = $course;
         return view('dashboard.teacher.edit-course', compact('selectedCourse'));
     }
 
@@ -116,27 +143,19 @@ class CourseController extends Controller
             $request->validate([
                 'course_name' => 'required',
                 'deskripsi' => 'required',
-                'tanggal_mulai' => 'required|date',
                 'tanggal_selesai' => 'required|date|after_or_equal:tanggal_mulai',
-                'teacher_id' => 'required|exists:users,id,role,teacher',
             ], [
                 'course_name.required' => 'Nama Course harus diisi',
                 'deskripsi.required' => 'Deskripsi harus diisi',
-                'tanggal_mulai.required' => 'Tanggal Mulai harus diisi',
-                'tanggal_mulai.date' => 'Tanggal Mulai harus berupa tanggal',
                 'tanggal_selesai.required' => 'Tanggal Selesai harus diisi',
                 'tanggal_selesai.date' => 'Tanggal Selesai harus berupa tanggal',
                 'tanggal_selesai.after_or_equal' => 'Tanggal Selesai harus setelah atau sama dengan Tanggal Mulai',
-                'teacher_id.required' => 'Pengajar harus diisi',
-                'teacher_id.exists' => 'Pengajar tidak valid',
             ]);
 
             $data = [
                 'course_name' => $request->course_name,
                 'deskripsi' => $request->deskripsi,
-                'tanggal_mulai' => $request->tanggal_mulai,
                 'tanggal_selesai' => $request->tanggal_selesai,
-                'teacher_id' => $request->teacher_id,
             ];
 
             Course::where('id', $course->id)->update($data);
@@ -151,8 +170,41 @@ class CourseController extends Controller
     public function destroy(Course $course)
     {
         if (Auth::check() && Auth::user()->role == 'teacher') {
-            Course::where('id', $course)->delete();
-            return redirect()->to('user')->with('success', "Course dengan Id $course berhasil dihapus");
+            $course->delete();
+            return redirect()->to('course')->with('success', "Course `$course->course_name` berhasil dihapus");
         }
+    }
+
+    public function search(Request $request)
+    {
+        $query = $request->input('query');
+
+        $courses = DB::table('courses')
+            ->join('users as teachers', 'courses.teacher_id', '=', 'teachers.id')
+            ->leftJoin('users as students', 'courses.student_id', '=', 'students.id')
+            ->where('teachers.role', 'teacher')
+            ->where('courses.course_name', 'like', '%' . $query . '%')
+            ->orderBy('courses.tanggal_selesai', 'desc')
+            ->select(
+                'courses.id',
+                'courses.course_name',
+                'courses.deskripsi',
+                'courses.tanggal_mulai',
+                'courses.tanggal_selesai',
+                'courses.teacher_id',
+                'teachers.name as teacher_name'
+            )
+            ->groupBy(
+                'courses.id',
+                'courses.course_name',
+                'courses.deskripsi',
+                'courses.tanggal_mulai',
+                'courses.tanggal_selesai',
+                'courses.teacher_id',
+                'teachers.name'
+            )
+            ->get();
+
+        return view('dashboard.student.home-student', compact('courses'));
     }
 }

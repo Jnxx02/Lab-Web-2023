@@ -5,10 +5,6 @@ Daftar Course
 @endsection
 
 @section('content')
-<div class="mb-8">
-    @include('dashboard.teacher.create-course')
-</div>
-
 <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
     @foreach ($courses as $item)
     <div class="bg-white dark:bg-gray-800 shadow-md rounded-lg overflow-hidden">
@@ -26,13 +22,15 @@ Daftar Course
             </div>
             <div
                 class="bg-gray-100 dark:bg-gray-700 px-4 py-2 border-t border-gray-200 dark:border-gray-600 flex justify-end items-end">
-                <a href="{{ url('/course/' . $item->id . '/edit') }}" class="text-blue-500 hover:underline">Kelola Course</a>
+                @if(now() <= $item->tanggal_selesai)
+                    <button type="submit" class="text-blue-500 hover:underline">Join Course</button>
+                    @else
+                    <span class="text-gray-500">Registration Closed</span>
+                    @endif
             </div>
 
         </div>
     </div>
     @endforeach
 </div>
-
-
 @endsection

@@ -18,8 +18,32 @@ class HomeController extends Controller
                 $users = User::all();
                 return view('dashboard.admin.home', compact('users'));
             } elseif (Auth::user()->role == 'student') {
-                $courses = Course::all();
-                return view('dashboard.student.home', compact('courses'));
+                $courses = DB::table('courses')
+                    ->join('users as teachers', 'courses.teacher_id', '=', 'teachers.id')
+                    ->leftJoin('users as students', 'courses.student_id', '=', 'students.id')
+                    ->inRandomOrder()
+                    ->limit(5)
+                    ->select(
+                        'courses.id',
+                        'courses.course_name',
+                        'courses.deskripsi',
+                        'courses.tanggal_mulai',
+                        'courses.tanggal_selesai',
+                        'courses.teacher_id',
+                        'teachers.name as teacher_name',
+                    )
+                    ->groupBy(
+                        'courses.id',
+                        'courses.course_name',
+                        'courses.deskripsi',
+                        'courses.tanggal_mulai',
+                        'courses.tanggal_selesai',
+                        'courses.teacher_id',
+                        'teachers.name'
+                    )
+                    ->get();
+            
+                return view('dashboard.student.home-student', compact('courses'));
             } elseif (Auth::user()->role == 'teacher') {
                 $courses = DB::table('courses')
                     ->join('users as teachers', 'courses.teacher_id', '=', 'teachers.id')
@@ -30,8 +54,7 @@ class HomeController extends Controller
                         'courses.course_name',
                         'courses.deskripsi',
                         'courses.teacher_id',
-                        'teachers.name as teacher_name',
-                        DB::raw('COUNT(students.id) as participant_count')
+                        'teachers.name as teacher_name'
                     )
                     ->groupBy('courses.id', 'teachers.name', 'courses.course_name', 'courses.deskripsi', 'courses.teacher_id')
                     ->get();

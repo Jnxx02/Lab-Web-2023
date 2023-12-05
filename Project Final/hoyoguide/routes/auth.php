@@ -82,4 +82,10 @@ Route::middleware('auth')->group(function () {
             'destroy' => 'course.destroy',
         ]);
     });
+
+    Route::middleware('student')->group(function () {
+        Route::get('/course', [CourseController::class, 'index'])->middleware(['auth', 'verified'])->name('course-list');
+        Route::get('/courses/search', [CourseController::class, 'search'])->middleware(['auth', 'verified'])->name('courses.search');
+
+    });
 });
