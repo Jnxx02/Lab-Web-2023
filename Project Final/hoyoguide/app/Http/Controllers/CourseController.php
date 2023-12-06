@@ -46,6 +46,10 @@ class CourseController extends Controller
                 )
                 ->get();
 
+            if ($courses->isEmpty()) {
+                return view('dashboard.teacher.course-list', ['courses' => null, 'message' => 'Anda belum membuat course']);
+            }
+
             return view('dashboard.teacher.course-list', compact('courses'));
 
         } elseif (Auth::user()->role == 'student') {
@@ -159,7 +163,7 @@ class CourseController extends Controller
             ];
 
             Course::where('id', $course->id)->update($data);
-            return redirect()->to('course')->with('success', 'Data berhasil diubah');
+            return redirect()->to('/teacher/courses')->with('success', 'Data berhasil diubah');
         }
     }
 
@@ -171,7 +175,7 @@ class CourseController extends Controller
     {
         if (Auth::check() && Auth::user()->role == 'teacher') {
             $course->delete();
-            return redirect()->to('course')->with('success', "Course `$course->course_name` berhasil dihapus");
+            return redirect()->to('/teacher/courses')->with('success', "Course `$course->course_name` berhasil dihapus");
         }
     }
 

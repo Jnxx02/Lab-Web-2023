@@ -72,14 +72,14 @@ Route::middleware('auth')->group(function () {
     });
 
     Route::middleware('teacher')->group(function () {
-        Route::resource('course', CourseController::class)->names([
-            'index' => 'course',
-            'create' => 'course.create',
-            'store' => 'course.store',
-            'show' => 'course.show',
-            'edit' => 'course.edit',
-            'update' => 'course.update',
-            'destroy' => 'course.destroy',
+        Route::resource('teacher/courses', CourseController::class)->names([
+            'index' => 'teacher.courses.index',
+            'create' => 'teacher.courses.create',
+            'store' => 'teacher.courses.store',
+            'show' => 'teacher.courses.show',
+            'edit' => 'teacher.courses.edit',
+            'update' => 'teacher.courses.update',
+            'destroy' => 'teacher.courses.destroy',
         ]);
     });
 

@@ -1,3 +1,4 @@
+<link rel="icon" href="{{ asset('images/icon.png') }}" type="image/x-icon">
 <x-guest-layout>
     <!-- Session Status -->
     <x-auth-session-status class="mb-4" :status="session('status')" />

@@ -28,7 +28,7 @@
             </div>
             <!-- Modal body -->
             <div class="p-4 md:p-5">
-                <form class="space-y-4" method="POST" action="{{ route('course.store') }}">
+                <form class="space-y-4" method="POST" action="{{ route('teacher.courses.store') }}">
                     @csrf
                     <input type="hidden" name="teacher_id" value="{{ Auth::user()->id }}">
 
