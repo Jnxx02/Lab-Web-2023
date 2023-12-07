@@ -28,9 +28,9 @@ Daftar Course
                         @csrf
                         <button type="submit" class="text-blue-500 hover:underline">Join Course</button>
                     </form>
-                    @else
+                @else
                     <span class="text-gray-500">Registration Closed</span>
-                    @endif
+                @endif
             </div>
 
         </div>
