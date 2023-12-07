@@ -9,8 +9,7 @@ use Illuminate\Database\Eloquent\Factories\Factory;
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Course>
  */
-class CourseFactory extends Factory
-{
+class CourseFactory extends Factory {
     /**
      * Define the model's default state.
      *
@@ -18,24 +17,22 @@ class CourseFactory extends Factory
      */
 
     protected $model = Course::class;
-    public function definition(): array
-    {
+    public function definition(): array {
+        $tanggalMulai = now();
+        $tanggalSelesai = fake()->dateTimeBetween($tanggalMulai, '+30 days')->format('Y-m-d');
+
         return [
             'course_name' => fake()->name(),
             'deskripsi' => fake()->text(),
-            'tanggal_mulai' => fake()->date(),
-            'tanggal_selesai' => fake()->date(),
+            'tanggal_mulai' => $tanggalMulai,
+            'tanggal_selesai' => $tanggalSelesai,
         ];
     }
 
-    public function configure()
-    {
+    public function configure() {
         return $this->afterMaking(function (Course $course) {
             $teacher = User::where('role', 'teacher')->inRandomOrder()->first();
             $course->teacher_id = $teacher->id;
-
-            $student = User::where('role', 'student')->inRandomOrder()->first();
-            $course->student_id = $student->id;
         });
     }
 }

@@ -20,7 +20,7 @@ class UserFactory extends Factory
      */
     public function definition(): array
     {
-        $roles = ['admin', 'teacher', 'student'];
+        $roles = ['teacher', 'student'];
         return [
             'name' => fake()->name(),
             'username' => fake()->unique()->userName(),

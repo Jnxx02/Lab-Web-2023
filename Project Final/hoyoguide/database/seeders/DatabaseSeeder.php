@@ -3,7 +3,9 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\Content;
 use App\Models\Course;
+use App\Models\Student_Course;
 use App\Models\User;
 use Illuminate\Database\Seeder;
 
@@ -21,7 +23,9 @@ class DatabaseSeeder extends Seeder
         //     'email' => 'test@example.com',
         // ]);
 
-        User::factory(10)->create();
-        Course::factory(10)->create();
+        User::factory(30)->create();
+        Course::factory(30)->create();
+        Content::factory(30)->create();
+        Student_Course::factory(30)->create();
     }
 }

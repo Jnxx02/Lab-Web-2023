@@ -17,17 +17,9 @@ return new class extends Migration {
             $table->date('tanggal_mulai');
             $table->date('tanggal_selesai');
 
-            // Constraint untuk teacher_id
             $table->foreignId('teacher_id')
                 ->constrained('users', 'id')
                 ->where('role', 'teacher')
-                ->onDelete('cascade');
-
-            // Constraint untuk student_id
-            $table->foreignId('student_id')
-                ->nullable()
-                ->constrained('users', 'id')
-                ->where('role', 'student')
                 ->onDelete('cascade');
 
             $table->timestamps();

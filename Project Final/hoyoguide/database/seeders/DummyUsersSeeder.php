@@ -23,17 +23,17 @@ class DummyUsersSeeder extends Seeder
 
             ],
             [
-                'name'=>'Pak Teacher',
+                'name'=>'Mimo',
                 'username'=>'Teacher',
-                'email'=>'teacher@gmail.com',
+                'email'=>'mimo@gmail.com',
                 'password'=>bcrypt('12345678'),
                 'role'=>'Teacher',
 
             ],
             [
-                'name'=>'Student',
+                'name'=>'Dawei',
                 'username'=>'Student',
-                'email'=>'student@gmail.com',
+                'email'=>'dawei@gmail.com',
                 'password'=>bcrypt('12345678'),
                 'role'=>'Student',
 

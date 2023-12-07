@@ -12,5 +12,11 @@ class Content extends Model
     protected $fillable = [
         'judul',
         'materi',
+        'course_id',
     ];
+
+    public function progressRecords()
+    {
+        return $this->hasMany(ProgressRecord::class);
+    }
 }

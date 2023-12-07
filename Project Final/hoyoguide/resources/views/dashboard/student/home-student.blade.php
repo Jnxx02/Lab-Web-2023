@@ -29,11 +29,15 @@
                 <p class="text-gray-700 dark:text-gray-300">Tanggal Mulai: {{ $item->tanggal_mulai }}</p>
                 <p class="text-gray-700 dark:text-gray-300">Tanggal Selesai: {{ $item->tanggal_selesai }}</p>
                 <p class="text-gray-700 dark:text-gray-300">Pengajar: {{ $item->teacher_name }}</p>
+                <p class="text-gray-700 dark:text-gray-300">Jumlah Peserta: {{ $item->jumlah_peserta }}</p>
             </div>
             <div
                 class="bg-gray-100 dark:bg-gray-700 px-4 py-2 border-t border-gray-200 dark:border-gray-600 flex justify-end items-end">
                 @if(now() <= $item->tanggal_selesai)
-                    <button type="submit" class="text-blue-500 hover:underline">Join Course</button>
+                    <form method="POST" action="{{ route('join-course', ['courseId' => $item->id]) }}">
+                        @csrf
+                        <button type="submit" class="text-blue-500 hover:underline">Join Course</button>
+                    </form>
                     @else
                     <span class="text-gray-500">Registration Closed</span>
                     @endif

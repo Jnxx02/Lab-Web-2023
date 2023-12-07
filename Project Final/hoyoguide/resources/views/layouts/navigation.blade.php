@@ -79,8 +79,8 @@
             @if (Auth::check() && Auth::user()->role == 'admin')
             <li>
                 <x-nav-link :href="route('user')" :active="request()->routeIs('user')">
-                    <svg class="w-4 h-4 dark:text-white" aria-hidden="true"
-                        xmlns="http://www.w3.org/2000/svg" fill="grey" viewBox="0 0 20 18">
+                    <svg class="w-4 h-4 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                        fill="grey" viewBox="0 0 20 18">
                         <path
                             d="M14 2a3.963 3.963 0 0 0-1.4.267 6.439 6.439 0 0 1-1.331 6.638A4 4 0 1 0 14 2Zm1 9h-1.264A6.957 6.957 0 0 1 15 15v2a2.97 2.97 0 0 1-.184 1H19a1 1 0 0 0 1-1v-1a5.006 5.006 0 0 0-5-5ZM6.5 9a4.5 4.5 0 1 0 0-9 4.5 4.5 0 0 0 0 9ZM8 10H5a5.006 5.006 0 0 0-5 5v2a1 1 0 0 0 1 1h11a1 1 0 0 0 1-1v-2a5.006 5.006 0 0 0-5-5Z" />
                     </svg>
@@ -89,14 +89,27 @@
                     </span>
                 </x-nav-link>
             </li>
+            <li>
+                <x-nav-link :href="route('admin.courses.index')" :active="request()->routeIs('admin.courses.index')">
+                    <svg class="w-4 h-4 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                        fill="grey" viewBox="0 0 20 18">
+                        <path
+                            d="M14 2a3.963 3.963 0 0 0-1.4.267 6.439 6.439 0 0 1-1.331 6.638A4 4 0 1 0 14 2Zm1 9h-1.264A6.957 6.957 0 0 1 15 15v2a2.97 2.97 0 0 1-.184 1H19a1 1 0 0 0 1-1v-1a5.006 5.006 0 0 0-5-5ZM6.5 9a4.5 4.5 0 1 0 0-9 4.5 4.5 0 0 0 0 9ZM8 10H5a5.006 5.006 0 0 0-5 5v2a1 1 0 0 0 1 1h11a1 1 0 0 0 1-1v-2a5.006 5.006 0 0 0-5-5Z" />
+                    </svg>
+                    <span class="ms-3 text-xl dark:text-white">
+                        {{ __('Daftar Course') }}
+                    </span>
+                </x-nav-link>
+            </li>
 
             @endif
 
             @if (Auth::check() && Auth::user()->role == 'teacher')
             <li>
-                <x-nav-link :href="route('teacher.courses.index')" :active="request()->routeIs('teacher.courses.index')">
-                    <svg class="w-4 h-4 dark:text-white" aria-hidden="true"
-                        xmlns="http://www.w3.org/2000/svg" fill="grey" viewBox="0 0 20 18">
+                <x-nav-link :href="route('teacher.courses.index')"
+                    :active="request()->routeIs('teacher.courses.index')">
+                    <svg class="w-4 h-4 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                        fill="grey" viewBox="0 0 20 18">
                         <path
                             d="M9 1.334C7.06.594 1.646-.84.293.653a1.158 1.158 0 0 0-.293.77v13.973c0 .193.046.383.134.55.088.167.214.306.366.403a.932.932 0 0 0 .5.147c.176 0 .348-.05.5-.147 1.059-.32 6.265.851 7.5 1.65V1.334ZM19.707.653C18.353-.84 12.94.593 11 1.333V18c1.234-.799 6.436-1.968 7.5-1.65a.931.931 0 0 0 .5.147.931.931 0 0 0 .5-.148c.152-.096.279-.235.366-.403.088-.167.134-.357.134-.55V1.423a1.158 1.158 0 0 0-.293-.77Z" />
                     </svg>
@@ -111,13 +124,25 @@
             @if (Auth::check() && Auth::user()->role == 'student')
             <li>
                 <x-nav-link :href="route('course-list')" :active="request()->routeIs('course-list')">
-                    <svg class="w-4 h-4 dark:text-white" aria-hidden="true"
-                        xmlns="http://www.w3.org/2000/svg" fill="grey" viewBox="0 0 20 18">
+                    <svg class="w-4 h-4 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                        fill="grey" viewBox="0 0 20 18">
                         <path
                             d="M9 1.334C7.06.594 1.646-.84.293.653a1.158 1.158 0 0 0-.293.77v13.973c0 .193.046.383.134.55.088.167.214.306.366.403a.932.932 0 0 0 .5.147c.176 0 .348-.05.5-.147 1.059-.32 6.265.851 7.5 1.65V1.334ZM19.707.653C18.353-.84 12.94.593 11 1.333V18c1.234-.799 6.436-1.968 7.5-1.65a.931.931 0 0 0 .5.147.931.931 0 0 0 .5-.148c.152-.096.279-.235.366-.403.088-.167.134-.357.134-.55V1.423a1.158 1.158 0 0 0-.293-.77Z" />
                     </svg>
                     <span class="ms-3 text-xl dark:text-white">
                         {{ __('Daftar Course') }}
+                    </span>
+                </x-nav-link>
+            </li>
+            <li>
+                <x-nav-link :href="route('my-courses')" :active="request()->routeIs('course-list')">
+                    <svg class="w-4 h-4 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                        fill="grey" viewBox="0 0 20 18">
+                        <path
+                            d="M9 1.334C7.06.594 1.646-.84.293.653a1.158 1.158 0 0 0-.293.77v13.973c0 .193.046.383.134.55.088.167.214.306.366.403a.932.932 0 0 0 .5.147c.176 0 .348-.05.5-.147 1.059-.32 6.265.851 7.5 1.65V1.334ZM19.707.653C18.353-.84 12.94.593 11 1.333V18c1.234-.799 6.436-1.968 7.5-1.65a.931.931 0 0 0 .5.147.931.931 0 0 0 .5-.148c.152-.096.279-.235.366-.403.088-.167.134-.357.134-.55V1.423a1.158 1.158 0 0 0-.293-.77Z" />
+                    </svg>
+                    <span class="ms-3 text-xl dark:text-white">
+                        {{ __('My Course') }}
                     </span>
                 </x-nav-link>
             </li>

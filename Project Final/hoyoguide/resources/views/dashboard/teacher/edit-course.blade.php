@@ -5,7 +5,7 @@ Kelola Course
 @endsection
 
 @section('content')
-<form method="POST" action="{{ url("/teacher/courses/{$selectedCourse->id}") }}" class="mb-6 flex justify-between
+<form method="POST" action="{{ url(" /teacher/courses/{$selectedCourse->id}") }}" class="mb-6 flex justify-between
     items-center">
     @csrf
     @method('DELETE')
@@ -56,14 +56,14 @@ Kelola Course
     </div>
 </form>
 
-<form method="POST" action="{{ url("/teacher/courses/{$selectedCourse->id}") }}">
+<form method="POST" action="{{ url(" /teacher/courses/{$selectedCourse->id}") }}">
     @csrf
     @method('PUT')
     <div class="mb-6 flex justify-between items-center gap-3">
         <div class="w-10/12">
             <label for="course_name" class="block mb-2 text-sm font-medium dark:text-white">Nama Course</label>
             <input type="text" id="course_name" name="course_name"
-            class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"
+                class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"
                 placeholder="John Doe" required value="{{ $selectedCourse->course_name }}">
         </div>
     </div>
@@ -90,5 +90,12 @@ Kelola Course
         class="focus:outline-none text-white bg-yellow-400 hover:bg-yellow-500 focus:ring-4 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2 dark:focus:ring-yellow-900">
         Ubah Data
     </button>
+
+    <button type="button"
+        onclick="window.location.href='{{ route('teacher.contents.index', ['courseId' => $selectedCourse->id]) }}'"
+        class="text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none dark:focus:ring-blue-800 dark:shadow-lg dark:shadow-blue-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center mb-2">
+        Lihat Content
+    </button>
+
 </form>
 @endsection

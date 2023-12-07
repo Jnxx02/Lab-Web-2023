@@ -61,18 +61,18 @@ Kelola Data User
     @method('PUT')
     <div class="mb-6 flex justify-between items-center gap-3">
         <div class="w-10/12">
-            <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Name</label>
+            <label for="name" class="block mb-2 text-sm font-medium dark:text-white">Name</label>
             <input type="text" id="name" name="name"
                 class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"
                 placeholder="John Doe" required value="{{ $item->name }}">
         </div>
 
         <div class="w-2/12">
-            <label for="role" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+            <label for="role" class="block mb-2 text-sm font-medium dark:text-white">
                 Role
             </label>
             <select id="role" name="role"
-                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                class="bg-gray-50 border border-gray-300 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-gray-900 dark:focus:ring-blue-500 dark:focus:border-blue-500">
                 <option value="{{ $item->role }}" selected>{{ ucwords($item->role) }}</option>
 
                 <?php $roles = ['admin', 'teacher', 'student']; ?>
@@ -86,14 +86,14 @@ Kelola Data User
     </div>
 
     <div class="mb-6">
-        <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Email</label>
+        <label for="email" class="block mb-2 text-sm font-medium dark:text-white">Email</label>
         <input type="email" id="email" name="email"
             class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"
             placeholder="name@flowbite.com" required value="{{ $item->email }}">
     </div>
 
     <div class="mb-6">
-        <label for="password" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+        <label for="password" class="block mb-2 text-sm font-medium dark:text-white">
             Password (Opsional)
         </label>
         <input type="password" id="password" name="password"
