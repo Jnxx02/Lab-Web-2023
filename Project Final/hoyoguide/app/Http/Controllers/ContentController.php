@@ -37,18 +37,7 @@ class ContentController extends Controller {
                 ->where('contents.course_id', $course->id)
                 ->get();
 
-            $progressRecords = Student_Course::where([
-                'student_id' => Auth::user()->id,
-                'course_id' => $course->id,
-            ])->with('progressRecords.content')->get();
-
-            $overallProgress = 0;
-            if($progressRecords->isNotEmpty()) {
-                $totalProgress = $progressRecords->sum('progress');
-                $overallProgress = $totalProgress / $progressRecords->count();
-            }
-
-            return view('dashboard.student.content.content-list', compact('contents', 'course', 'progressRecords', 'overallProgress'));
+            return view('dashboard.student.content.content-list', compact('contents', 'course'));
         } elseif(Auth::check() && Auth::user()->role == 'admin') {
             $course = Course::findOrFail($courseId);
 

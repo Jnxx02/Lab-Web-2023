@@ -13,7 +13,7 @@ Detail Content: {{ $content->judul }}
 
 <form method="POST" action="{{ route('student.contents.complete', ['content' => $content->id]) }}">
     @csrf
-    <button type="submit" class="text-green-500 hover:underline mt-2 block">Selesai Belajar (100%)</button>
+    <button type="submit" class="text-green-500 hover:underline mt-2 block">Selesai Belajar</button>
 </form>
 
 @endsection
